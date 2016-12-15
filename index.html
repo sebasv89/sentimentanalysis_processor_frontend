@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Document Indexer</title>
+  </head>
+  <body>
+    Please specify the path to scan: <input type="file" webkitdirectory directory multiple value="Select the directory to scan"/><input type="button" value="SCAN!"/><br/>
+    <p/>
+    <b>Search</b>
+    <p/>
+    Search by person: 
+    <select multiple id="personName"></select> <input type="button" value="Search"/>
+    <input type="radio" name="personFilter" id="all" checked="checked">All Documents</input><input type="radio" name="personFilter" id="all">Only positives</input><input type="radio" name="personFilter" id="negative">Only negatives</input>
+    <p/>
+    Search by text: <input type="text"/><input type="button" value="Search"/> 
+    <p/>
+    Search all: <select  id="allFilter" name="allFilter"><option value="all">All</option><option value="positives">Positives</option><option value="negatives">Negatives</option></select> <input type="button" value="Search"/>
+
+  </body>
+<script>window.$ = window.jQuery = require('./jquery.min.js');</script>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js');
+  </script>
+</html>

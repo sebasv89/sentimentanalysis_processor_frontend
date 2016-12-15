@@ -1,0 +1,15 @@
+{
+  "name": "sentiment_analysis_processor",
+  "version": "1.0.0",
+  "description": "FrontEnd for app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/sebasv89/sentimentanalysis_processor_frontend",
+  "keywords": [],
+  "author": "sebasv89",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}
