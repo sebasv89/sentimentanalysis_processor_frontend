@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Document Indexer - Results</title>
+  </head>
+  <body>
+    Results:
+    <p/>
+    <table border="1" id="resultsTable">
+      <tr>
+        <td>File Name</td>
+        <td>Project</td>
+        <td>Sentiment Type</td>
+        <td>Open File</td>
+      </tr>
+    </table>
+    <button value="Back" onclick="goback()">Back</button>
+
+
+  </body>
+<script>window.$ = window.jQuery = require('./jquery.min.js');</script>
+<script>require('./url.min.js');</script>
+<script>
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
+
+
+  jQuery(function(){
+     jQuery.get('http://localhost:8080/rest/search/' + $.urlParam('text'), function(response){
+            if (response === null || response.length <= 0){
+              alert("No Results!");
+              window.location.href = "index.html";
+            }
+
+            $.each(response, function (i, item) {
+              $('#resultsTable tr:last').after('<tr><td>' + item.fileName + '</td><td>' + item.project + '</td><td>Not available yet</td><td><a href="' + item.canonicalPath + '">' + item.canonicalPath + '</a></td></tr>');
+            });
+
+        });
+
+  });
+
+  function goback(){
+      window.location.href = "index.html";
+  }
+</script>
+</html>

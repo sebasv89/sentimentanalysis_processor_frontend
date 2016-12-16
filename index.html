@@ -13,7 +13,7 @@
     <select multiple id="personName"></select> <input type="button" value="Search"/>
     <input type="radio" name="personFilter" id="all" checked="checked">All Documents</input><input type="radio" name="personFilter" id="all">Only positives</input><input type="radio" name="personFilter" id="negative">Only negatives</input>
     <p/>
-    Search by text: <input type="text"/><input type="button" value="Search"/> 
+    Search by text: <input type="text" id="textSearchField"/><input type="button" value="Search" onclick="executeTextSearch();"/> 
     <p/>
     Search all: <select  id="allFilter" name="allFilter"><option value="all">All</option><option value="positives">Positives</option><option value="negatives">Negatives</option></select> <input type="button" value="Search"/>
 
@@ -29,6 +29,11 @@ function runScan(){
     jQuery.post('http://localhost:8080/rest/scan?path='+path, function(response){
         alert("Task successfully started!");
     });
+}
+
+function executeTextSearch(){
+  window.location.href = "results.html?text=" + $("#textSearchField")[0].value;
+
 }
 
 </script>
